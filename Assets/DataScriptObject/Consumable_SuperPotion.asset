@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555b35b5b1cd96841bf95897a89d5ea3, type: 3}
+  m_Name: Consumable_SuperPotion
+  m_EditorClassIdentifier: 
+  id: 4
+  itemName: "\u8D85\u7EA7\u836F\u6C34"
+  itemType: 1
+  description: "\u53EF\u4EE5\u77ED\u6682\u589E\u5F3A\u5404\u4E2A\u5C5E\u6027"
+  propertyList:
+  - propertyType: 0
+    value: 30
+  - propertyType: 1
+    value: 5
+  - propertyType: 2
+    value: 10
+  - propertyType: 3
+    value: 20
+  - propertyType: 4
+    value: 50
+  icon: {fileID: 21300000, guid: 794744abf5a160c478e7bc2b69a2293e, type: 3}
+  prefab: {fileID: 176961299475585623, guid: e1d393cf93d0724448bd562aa1bbfd66, type: 3}
