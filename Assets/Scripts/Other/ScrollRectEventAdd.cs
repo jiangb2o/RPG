@@ -6,15 +6,7 @@ using UnityEngine.UI;
 
 public class ScrollRectEventAdd : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IScrollHandler
 {
-    private ScrollRect Scroll;
-
-
-    private void Awake()
-    {
-        GameObject InventoryUI = GameObject.Find("Canvas/InventoryUI");
-
-        Scroll = InventoryUI.transform.Find("UI/Scroll View").GetComponent<ScrollRect>();
-    }
+    public ScrollRect Scroll;
 
     // scroll
     public void OnScroll(PointerEventData eventData)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -60,6 +61,8 @@ public class InventoryUI : MonoBehaviour
     public void AddItem(ItemScriptObject itemSO)
     {
         GameObject ItemGameObject = GameObject.Instantiate(itemPrefab, content.transform);
+        // 添加组件, 并为Scroll赋值
+        ItemGameObject.AddComponent<ScrollRectEventAdd>().Scroll = transform.Find("UI/Scroll View").GetComponent<ScrollRect>();
         ItemUI itemUI = ItemGameObject.GetComponent<ItemUI>();
 
         itemUI.InitItem(itemSO);
