@@ -10,7 +10,8 @@ public class PlayerData : MonoBehaviour
     public int exp;
     public Vector3 position;
 
-    public const string PLAYER_DATA_KEY = "PlayerData";
+    const string PLAYER_DATA_KEY = "PlayerData";
+    const string PLAYER_DATA_FILE_NAME = "PlayerData.sav";
 
     private PlayerLevel playerLevel;
 
@@ -45,25 +46,22 @@ public class PlayerData : MonoBehaviour
 
     public void Save()
     {
-        SaveByPlayerPrefs();
+        //SaveByPlayerPrefs();
+        SaveByJson();
     }
 
     public void Load()
     {
         // 避免加载完位置后自动移动到上一个目标位置
         GetComponent<NavMeshAgent>().ResetPath();
-        LoadFromPlayerPrefs();
+        //LoadFromPlayerPrefs();
+        LoadFromJson();
     }
 
+    #region PlayerPrefs
     void SaveByPlayerPrefs()
     {
-        SaveData saveData = new SaveData();
-
-        saveData.playerName = playerName;
-        saveData.level = level;
-        saveData.exp = exp;
-        saveData.position = position;
-
+        SaveData saveData = SavingData();
         SaveSystem.SaveByPlayerPrefs(PLAYER_DATA_KEY, saveData);
     }
 
@@ -71,18 +69,58 @@ public class PlayerData : MonoBehaviour
     {
         var json = SaveSystem.LoadFromPlayerPrefs(PLAYER_DATA_KEY);
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+        LoadData(saveData);
+    }
+    #endregion
 
+    # region JSON
+
+    void SaveByJson()
+    {
+        SaveSystem.SaveByJson(PLAYER_DATA_FILE_NAME, SavingData());
+    }
+
+    void LoadFromJson()
+    {
+        SaveData data = SaveSystem.LoadFromJson<SaveData>(PLAYER_DATA_FILE_NAME);
+        LoadData(data);
+    }
+
+    #endregion
+
+
+    # region Help Functions
+    private SaveData SavingData()
+    {
+        SaveData saveData = new SaveData();
+
+        saveData.playerName = playerName;
+        saveData.level = level;
+        saveData.exp = exp;
+        saveData.position = position;
+        return saveData;
+    }
+
+    private void LoadData(SaveData saveData)
+    {
         playerName = saveData.playerName;
         playerLevel.level = saveData.level;
         playerLevel.currentExp = saveData.exp;
         transform.position = saveData.position;
-
         PlayerPropertyUI.Instance.UpdatePlayerPropertyUI();
     }
 
     [UnityEditor.MenuItem("Developer/Delete Player Data Prefs")]
     public static void DeletePlayerDataPrefs()
     {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey(PLAYER_DATA_KEY);
     }
+
+    [UnityEditor.MenuItem("Developer/Delete Player Data Save File")]
+    public static void DeletePlayerDataSaveFile()
+    {
+        SaveSystem.DeleteSaveFile(PLAYER_DATA_FILE_NAME);
+    }
+
+    #endregion
 }
