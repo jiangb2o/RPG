@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerData : MonoBehaviour
 {
@@ -49,6 +50,8 @@ public class PlayerData : MonoBehaviour
 
     public void Load()
     {
+        // 避免加载完位置后自动移动到上一个目标位置
+        GetComponent<NavMeshAgent>().ResetPath();
         LoadFromPlayerPrefs();
     }
 
