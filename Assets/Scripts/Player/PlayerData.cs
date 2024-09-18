@@ -34,11 +34,11 @@ public class PlayerData : MonoBehaviour
         level = playerLevel.level;
         exp = playerLevel.currentExp;
         position = transform.position;
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.F1))
         {
             Save();
         }
-        else if (Input.GetKeyDown(KeyCode.L))
+        else if (Input.GetKeyDown(KeyCode.F2))
         {
             Load();
         }
@@ -78,6 +78,7 @@ public class PlayerData : MonoBehaviour
     void SaveByJson()
     {
         SaveSystem.SaveByJson(PLAYER_DATA_FILE_NAME, SavingData());
+        //SaveSystem.SaveByJson($"{System.DateTime.Now: yyyy.M.dd HH-mm-ss}.sav", SavingData());
     }
 
     void LoadFromJson()
