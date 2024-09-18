@@ -11,15 +11,21 @@ public class EightMove : MonoBehaviour
     const KeyCode S = KeyCode.S;
     const KeyCode D = KeyCode.D;
 
-    public float speed = 10;
+    public float maxSpeed;
+    public float speed;
+    public float acceleration;
+
     public Queue<KeyCode> keyCodeQueue = new Queue<KeyCode>();
-    [SerializeField] public List<KeyCode> keyCodeList;
+    public List<KeyCode> keyCodeList;
 
     private Vector3 moveDir;
 
     // Start is called before the first frame update
     void Start()
     {
+        maxSpeed = 12;
+        speed = 0;
+        acceleration = 5;
         moveDir = Vector3.zero;
     }
 
@@ -29,10 +35,10 @@ public class EightMove : MonoBehaviour
         GetKeys();
         UpdateMoveDirectionByKeys();
 
-        if(moveDir != Vector3.zero)
+        if (moveDir != Vector3.zero)
         {
             transform.forward = moveDir;
-            transform.position += transform.forward * speed * Time.deltaTime;
+            transform.position += transform.forward * maxSpeed * Time.deltaTime;
         }
     }
 
@@ -44,45 +50,24 @@ public class EightMove : MonoBehaviour
 
         moveDir = Vector3.zero;
 
-        if (keyCodeQueue.Count == 2)
+        if (keyCodeQueue.Contains(W))
         {
-            if(keyCodeQueue.Contains(W) && keyCodeQueue.Contains(A))
-            {
-                moveDir = Vector3.Normalize(cameraForward - cameraRight);
-            }
-            else if(keyCodeQueue.Contains(W) && keyCodeQueue.Contains(D))
-            {
-                moveDir = Vector3.Normalize(cameraForward + cameraRight);
-            }
-            else if(keyCodeQueue.Contains(S) && keyCodeQueue.Contains(A))
-            {
-                moveDir = Vector3.Normalize(-cameraForward - cameraRight);
-            }
-            else if(keyCodeQueue.Contains(S) && keyCodeQueue.Contains(D))
-            {
-                moveDir = Vector3.Normalize(-cameraForward + cameraRight);
-            }
-            // WS, AD 不移动
+            moveDir += cameraForward;
         }
-        else if(keyCodeQueue.Count == 1)
+        if (keyCodeQueue.Contains(A))
         {
-            if (keyCodeQueue.Contains(W))
-            {
-                moveDir = cameraForward;
-            }
-            else if (keyCodeQueue.Contains(S))
-            {
-                moveDir = -cameraForward;
-            }
-            else if (keyCodeQueue.Contains(A))
-            {
-                moveDir = -cameraRight;
-            }
-            else if (keyCodeQueue.Contains(D))
-            {
-                moveDir = cameraRight;
-            }
+            moveDir -= cameraRight;
         }
+        if (keyCodeQueue.Contains(S))
+        {
+            moveDir -= cameraForward;
+        }
+        if (keyCodeQueue.Contains(D))
+        {
+            moveDir += cameraRight;
+        }
+
+        moveDir.Normalize();
     }
 
     private void GetKeys()
