@@ -33,6 +33,7 @@ public class EightDirectionMove : MonoBehaviour
     void Update()
     {
         GetKeys();
+        keyCodeList = keyCodeQueue.ToList();
         UpdateMoveDirectionByKeys();
 
         if (moveDir != Vector3.zero)
@@ -139,8 +140,6 @@ public class EightDirectionMove : MonoBehaviour
         {
             RemoveKeyInQueue(D);
         }
-
-        keyCodeList = keyCodeQueue.ToList();
     }
 
     private void RemoveKeyInQueue(KeyCode k)
