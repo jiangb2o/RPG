@@ -15,9 +15,6 @@ public class EightDirectionMove : MonoBehaviour
     public float speed;
     public float acceleration;
 
-    public Queue<KeyCode> keyCodeQueue = new Queue<KeyCode>();
-    public List<KeyCode> keyCodeList;
-
     private Vector3 moveDir;
 
     // Start is called before the first frame update
@@ -32,8 +29,6 @@ public class EightDirectionMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetKeys();
-        keyCodeList = keyCodeQueue.ToList();
         UpdateMoveDirectionByKeys();
 
         if (moveDir != Vector3.zero)
@@ -85,98 +80,23 @@ public class EightDirectionMove : MonoBehaviour
 
         moveDir = Vector3.zero;
 
-        if (keyCodeQueue.Contains(W))
+        if (Input.GetKey(W))
         {
             moveDir += cameraForward;
         }
-        if (keyCodeQueue.Contains(A))
+        if (Input.GetKey(A))
         {
             moveDir -= cameraRight;
         }
-        if (keyCodeQueue.Contains(S))
+        if (Input.GetKey(S))
         {
             moveDir -= cameraForward;
         }
-        if (keyCodeQueue.Contains(D))
+        if (Input.GetKey(D))
         {
             moveDir += cameraRight;
         }
 
         moveDir.Normalize();
-    }
-
-    private void GetKeys()
-    {
-        if (Input.GetKeyDown(W))
-        {
-            AddKeyToQueue(W);
-        }
-        if (Input.GetKeyDown(A))
-        {
-            AddKeyToQueue(A);
-        }
-        if (Input.GetKeyDown(S))
-        {
-            AddKeyToQueue(S);
-        }
-        if (Input.GetKeyDown(D))
-        {
-            AddKeyToQueue(D);
-        }
-
-        if (Input.GetKeyUp(W))
-        {
-            RemoveKeyInQueue(W);
-        }
-        if (Input.GetKeyUp(A))
-        {
-            RemoveKeyInQueue(A);
-        }
-        if (Input.GetKeyUp(S))
-        {
-            RemoveKeyInQueue(S);
-        }
-        if (Input.GetKeyUp(D))
-        {
-            RemoveKeyInQueue(D);
-        }
-    }
-
-    private void RemoveKeyInQueue(KeyCode k)
-    {
-        if (keyCodeQueue.Contains(k))
-        {
-            if (keyCodeQueue.Peek() == k)
-            {
-                keyCodeQueue.Dequeue();
-            }
-            else // 包含k, 但队首不是k
-            {
-                // 将原队首移至队尾
-                keyCodeQueue.Enqueue(keyCodeQueue.Dequeue());
-                keyCodeQueue.Dequeue();
-            }
-        }
-    }
-
-    private void AddKeyToQueue(KeyCode k)
-    {
-        if (keyCodeQueue.Count >= 2)
-        {
-            // 不包含当前keyCode或已包含且在队首
-            if (!keyCodeQueue.Contains(k) || keyCodeQueue.Peek() == k)
-            {
-                // 将当前keyCode加入队尾
-                keyCodeQueue.Dequeue();
-                keyCodeQueue.Enqueue(k);
-            }
-        }
-        else
-        {
-            if (!keyCodeQueue.Contains(k))
-            {
-                keyCodeQueue.Enqueue(k);
-            }
-        }
     }
 }

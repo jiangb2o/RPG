@@ -2763,7 +2763,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &342265700
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3322,8 +3322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d532207f470564d838f3ccbec542bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 0
   speed: 10
-  keyCodeList: 
+  acceleration: 0
 --- !u!114 &367538595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8138,8 +8139,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomSpeed: 10
+  mouseSensitivityX: 1000
+  mouseSensitivityY: 500
   high: 5
   dis: 5
+  yRotation: 0
 --- !u!1 &970862088
 GameObject:
   m_ObjectHideFlags: 0
@@ -15248,9 +15252,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1461790686370370885, guid: 3350a8df16913e541ab6b48fab1902c1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1461790686370370893, guid: 3350a8df16913e541ab6b48fab1902c1, type: 3}
       propertyPath: m_Name
       value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1461790686370370894, guid: 3350a8df16913e541ab6b48fab1902c1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3350a8df16913e541ab6b48fab1902c1, type: 3}
@@ -15483,7 +15495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8869284437640444058, guid: b0de3a9a8e3a7154fb3d09ed4361c338, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8869284437640444062, guid: b0de3a9a8e3a7154fb3d09ed4361c338, type: 3}
       propertyPath: m_RootOrder
