@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class EnemyAttacked : MonoBehaviour
 {
+    public float MaxHp = 100;
     public float HP = 100;
     public int exp = 20;
+
+    void OnEnable()
+    {
+        HP = MaxHp;
+    }
 
     // Start is called before the first frame update
     void Start() { }
@@ -34,7 +40,6 @@ public class EnemyAttacked : MonoBehaviour
     {
         DropPickableItem();
         EventCenter.EnemyDied(this);
-        Destroy(this.gameObject);
     }
 
     private void DropPickableItem()

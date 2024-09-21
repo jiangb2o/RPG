@@ -9,12 +9,13 @@ public class EnemySpawner : MonoBehaviour
     public int maxEnemyCount = 3;
 
     private float spawnTimer;
-
+    private ObjectPool EnemyObjectPool;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        EnemyObjectPool = new ObjectPool(enemyPrefab, maxEnemyCount, transform.parent);
+        EventCenter.OnEnemyDied += OnEmemyDie;
     }
 
     // Update is called once per frame
@@ -33,7 +34,13 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        GameObject newEnemy = GameObject.Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+        GameObject newEnemy = EnemyObjectPool.Get();
+        newEnemy.transform.position = this.transform.position;
         newEnemy.transform.parent = this.transform;
+    }
+
+    void OnEmemyDie(EnemyAttacked enemy)
+    {
+        EnemyObjectPool.Return(enemy.gameObject);
     }
 }
