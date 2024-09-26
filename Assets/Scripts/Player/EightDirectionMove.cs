@@ -16,14 +16,17 @@ public class EightDirectionMove : MonoBehaviour
     public float acceleration;
 
     private Vector3 moveDir;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        maxSpeed = 12;
+        maxSpeed = 10;
         speed = 0;
         acceleration = 20;
         moveDir = Vector3.zero;
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,6 +36,7 @@ public class EightDirectionMove : MonoBehaviour
 
         if (moveDir != Vector3.zero)
         {
+            animator.SetBool("isRun", true);
             transform.forward = moveDir;
             // 匀速阶段
             if (speed >= maxSpeed)
@@ -47,6 +51,7 @@ public class EightDirectionMove : MonoBehaviour
         }
         else if(speed != 0)// 无按键输入且速度不为0, 做匀减速运动
         {
+            animator.SetBool("isRun", false);
             AccelerationPhase(-acceleration, 0.0f);
         }
     }
