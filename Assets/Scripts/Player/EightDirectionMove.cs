@@ -36,7 +36,7 @@ public class EightDirectionMove : MonoBehaviour
 
         if (moveDir != Vector3.zero)
         {
-            animator.SetBool("isRun", true);
+            animator.SetBool("IsRun", true);
             transform.forward = moveDir;
             // 匀速阶段
             if (speed >= maxSpeed)
@@ -57,7 +57,7 @@ public class EightDirectionMove : MonoBehaviour
             }
             if (speed < 5)
             {
-                animator.SetBool("isRun", false);
+                animator.SetBool("IsRun", false);
             }
         }
     }

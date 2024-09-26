@@ -20,7 +20,7 @@ public class AnimatorController : MonoBehaviour
     private void Attack()
     {
         //animator.SetBool("isAttack", true);
-        animator.SetTrigger("T_isAttack");
+        animator.SetTrigger("T_Attack");
     }
 
     // Update is called once per frame
@@ -29,6 +29,20 @@ public class AnimatorController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Keypad1))
         {
             Attack();
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            float attackSpeed = animator.GetFloat("AttackSpeed");
+            animator.SetFloat("AttackSpeed", attackSpeed + 0.5f);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            float attackSpeed = animator.GetFloat("AttackSpeed");
+            animator.SetFloat("AttackSpeed", attackSpeed - 0.5f);
+        }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetTrigger("T_Jump");
         }
     }
 }
