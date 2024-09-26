@@ -49,10 +49,24 @@ public class EightDirectionMove : MonoBehaviour
                 AccelerationPhase(acceleration, maxSpeed);
             }
         }
-        else if(speed != 0)// 无按键输入且速度不为0, 做匀减速运动
+        else
         {
-            animator.SetBool("isRun", false);
-            AccelerationPhase(-acceleration, 0.0f);
+            if (speed != 0)// 无按键输入且速度不为0, 做匀减速运动
+            {
+                AccelerationPhase(-acceleration, 0.0f);
+            }
+            if (speed < 5)
+            {
+                animator.SetBool("isRun", false);
+            }
+        }
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag != Tag.GROUND)
+        {
+            speed = 0;
         }
     }
 
@@ -60,7 +74,7 @@ public class EightDirectionMove : MonoBehaviour
     {
         float newSpeed = speed + a * Time.deltaTime;
         // 可以加速到最大速度/减速到最小速度
-        if ( (a > 0 && newSpeed > limitSpeed) || (a < 0 && newSpeed < limitSpeed))
+        if ((a > 0 && newSpeed > limitSpeed) || (a < 0 && newSpeed < limitSpeed))
         {
             float accTime = Mathf.Abs((limitSpeed - speed) / a);
             // 加速/减速阶段距离
