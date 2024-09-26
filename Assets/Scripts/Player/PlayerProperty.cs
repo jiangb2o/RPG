@@ -30,11 +30,13 @@ public class PlayerProperty : MonoBehaviour
     private List<PropertyRecord> propertyRecordList;
 
     private NavMeshAgent playerAgent;
+    private EightDirectionMove playMove;
 
     // Start is called before the first frame update
     void Start()
     {
         playerAgent = GetComponent<NavMeshAgent>();
+        playMove = GetComponent<EightDirectionMove>();
 
         hp.propertyType = PropertyType.HP;
         attack.propertyType = PropertyType.Attack;
@@ -99,7 +101,14 @@ public class PlayerProperty : MonoBehaviour
             }
         }
         speed.value = Math.Max(speed.value, speedMin);
-        playerAgent.speed = speed.value;
+        if(playerAgent != null)
+        {
+            playerAgent.speed = speed.value;
+        }
+        else if (playMove != null)
+        {
+            playMove.maxSpeed = speed.value;
+        }
         PlayerPropertyUI.Instance.UpdatePlayerPropertyUI();
     }
 
