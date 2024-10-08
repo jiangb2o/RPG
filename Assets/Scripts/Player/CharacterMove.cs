@@ -4,12 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EightDirectionMove : MonoBehaviour
+public class CharacterMove : MonoBehaviour
 {
-    const KeyCode W = KeyCode.W;
-    const KeyCode A = KeyCode.A;
-    const KeyCode S = KeyCode.S;
-    const KeyCode D = KeyCode.D;
 
     public float maxSpeed;
     public float speed;
@@ -23,7 +19,7 @@ public class EightDirectionMove : MonoBehaviour
     {
         maxSpeed = 10;
         speed = 0;
-        acceleration = 20;
+        acceleration = 70;
         moveDir = Vector3.zero;
 
         animator = GetComponent<Animator>();
@@ -32,11 +28,11 @@ public class EightDirectionMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateMoveDirectionByKeys();
+        UpdateMoveDirection();
 
         if (moveDir != Vector3.zero)
         {
-            animator.SetBool("IsRun", true);
+            //if(animator) animator.SetBool("IsRun", true);
             transform.forward = moveDir;
             // 匀速阶段
             if (speed >= maxSpeed)
@@ -55,10 +51,10 @@ public class EightDirectionMove : MonoBehaviour
             {
                 AccelerationPhase(-acceleration, 0.0f);
             }
-            if (speed < 5)
-            {
-                animator.SetBool("IsRun", false);
-            }
+            // if (speed < 5)
+            // {
+            //     if(animator) animator.SetBool("IsRun", false);
+            // }
         }
     }
 
@@ -91,31 +87,22 @@ public class EightDirectionMove : MonoBehaviour
         }
     }
 
-    private void UpdateMoveDirectionByKeys()
+    private void UpdateMoveDirection()
     {
         Vector3 cameraForward = Camera.main.transform.forward;
         cameraForward.y = 0.0f;
         Vector3 cameraRight = Camera.main.transform.right;
+        
+        float moveX = Input.GetAxis("Horizontal");
+        float moveY = Input.GetAxis("Vertical");
 
-        moveDir = Vector3.zero;
-
-        if (Input.GetKey(W))
+        if (animator)
         {
-            moveDir += cameraForward;
+            animator.SetFloat("MoveX", moveX);
+            animator.SetFloat("MoveY", moveY);
         }
-        if (Input.GetKey(A))
-        {
-            moveDir -= cameraRight;
-        }
-        if (Input.GetKey(S))
-        {
-            moveDir -= cameraForward;
-        }
-        if (Input.GetKey(D))
-        {
-            moveDir += cameraRight;
-        }
-
+        // 相对摄像机方向
+        moveDir = moveX * cameraRight + moveY * cameraForward;
         moveDir.Normalize();
     }
 }

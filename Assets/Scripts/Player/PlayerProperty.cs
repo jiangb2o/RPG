@@ -30,13 +30,13 @@ public class PlayerProperty : MonoBehaviour
     private List<PropertyRecord> propertyRecordList;
 
     private NavMeshAgent playerAgent;
-    private EightDirectionMove playMove;
+    private CharacterMove playMove;
 
     // Start is called before the first frame update
     void Start()
     {
         playerAgent = GetComponent<NavMeshAgent>();
-        playMove = GetComponent<EightDirectionMove>();
+        playMove = GetComponent<CharacterMove>();
 
         hp.propertyType = PropertyType.HP;
         attack.propertyType = PropertyType.Attack;

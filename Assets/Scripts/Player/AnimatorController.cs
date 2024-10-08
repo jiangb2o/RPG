@@ -8,13 +8,11 @@ using UnityEngine.UI;
 public class AnimatorController : MonoBehaviour
 {
     private Animator animator;
-    public Button attackButton;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        attackButton.onClick.AddListener(Attack);
     }
 
     private void Attack()
@@ -29,16 +27,6 @@ public class AnimatorController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Keypad1))
         {
             Attack();
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            float attackSpeed = animator.GetFloat("AttackSpeed");
-            animator.SetFloat("AttackSpeed", attackSpeed + 0.5f);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            float attackSpeed = animator.GetFloat("AttackSpeed");
-            animator.SetFloat("AttackSpeed", attackSpeed - 0.5f);
         }
         if(Input.GetKeyDown(KeyCode.Space))
         {
