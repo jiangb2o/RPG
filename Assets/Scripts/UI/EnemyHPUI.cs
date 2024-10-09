@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,8 @@ public class EnemyHPUI : MonoBehaviour
     private CapsuleCollider enemyCollider;
 
     private Image blood;
-    private Image virtualBlood;
+    private Image effect;
+    private TextMeshProUGUI HpValue;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +22,10 @@ public class EnemyHPUI : MonoBehaviour
         targetEnemy = transform.parent.GetComponent<EnemyAttacked>();
         rect = GetComponent<RectTransform>();
         enemyCollider = transform.parent.GetComponent<CapsuleCollider>();
-        virtualBlood = transform.Find("VirtualBlood").GetComponent<Image>();
+        
+        effect = transform.Find("Effect").GetComponent<Image>();
         blood = transform.Find("Blood").GetComponent<Image>();
+        HpValue = transform.Find("HpValue").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -33,7 +37,8 @@ public class EnemyHPUI : MonoBehaviour
     private void UpdateHealth()
     {
         blood.fillAmount = targetEnemy.HP / targetEnemy.MaxHp;
-        virtualBlood.fillAmount = Mathf.Lerp(virtualBlood.fillAmount, blood.fillAmount, Time.deltaTime * lerpSpeed);
+        effect.fillAmount = Mathf.Lerp(effect.fillAmount, blood.fillAmount, Time.deltaTime * lerpSpeed);
+        HpValue.text = targetEnemy.HP + "/" + targetEnemy.MaxHp;
     }
         
 
@@ -42,6 +47,6 @@ public class EnemyHPUI : MonoBehaviour
         Vector3 pos = targetEnemy.transform.position;
         pos.y = enemyCollider.height * transform.parent.localScale.y + offset.y;
         rect.transform.position = pos;
-        rect.transform.forward = -Camera.main.transform.forward;
+        rect.transform.forward = Camera.main.transform.forward;
     }
 }
