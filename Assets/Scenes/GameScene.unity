@@ -2920,7 +2920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &342265700
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6065,6 +6065,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1969643385822655143, guid: 486ecd3aa23ab9b4a8324770c99968ac, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1969643385822655146, guid: 486ecd3aa23ab9b4a8324770c99968ac, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -6095,7 +6099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9202598555821455121, guid: 486ecd3aa23ab9b4a8324770c99968ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.54
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 9202598555821455121, guid: 486ecd3aa23ab9b4a8324770c99968ac, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8186,8 +8190,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.18659708, y: -0.7893173, z: 0.33006284, w: -0.48292667}
-  m_LocalPosition: {x: -30.06, y: 8.1, z: -1.53}
+  m_LocalRotation: {x: 0.2030487, y: 0.76793534, z: -0.29300225, w: 0.5321619}
+  m_LocalPosition: {x: -26.278233, y: 10.767308, z: 2.602471}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8277,7 +8281,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5ffeb72e31aeaa4a9326423b65da18f, type: 3}
   m_Name: 
@@ -8290,7 +8294,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c4a020e0299e614b8db8a146cf52801, type: 3}
   m_Name: 
@@ -14676,7 +14680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5762902411667481585, guid: 1235f6fdfe904874cab3c83e4a67727c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5762902411667481585, guid: 1235f6fdfe904874cab3c83e4a67727c, type: 3}
       propertyPath: m_TagString

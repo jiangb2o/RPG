@@ -7,7 +7,7 @@ public class EnemyAttacked : MonoBehaviour
     public float MaxHp = 100;
     public float HP = 100;
     public int exp = 20;
-
+    
     void OnEnable()
     {
         HP = MaxHp;
@@ -18,13 +18,7 @@ public class EnemyAttacked : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        // test code
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
-        //     TakeDamage(51);
-        // }
-    }
+    { }
 
     public void TakeDamage(float damage)
     {
