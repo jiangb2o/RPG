@@ -22,7 +22,6 @@ public class PlayerMove : MonoBehaviour
          * 如果碰撞到物体
          * 设置NavmeshAgent的目的位置, 利用自动导航系统导航到目标位置
          */
-        // TODO: 对话时禁止移动
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

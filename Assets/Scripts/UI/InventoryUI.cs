@@ -89,7 +89,6 @@ public class InventoryUI : MonoBehaviour
     {
         InventoryManager.Instance.RemoveItem(currentItemUI.itemSO);
         itemDetailUI.Hide();
-        // TODO : modify Player property after use item
         ItemScriptObject itemSO = currentItemUI.itemSO;
         GameObject.FindGameObjectWithTag(Tag.PLAYER).GetComponent<PlayerItemUse>().UseItem(itemSO);
 
