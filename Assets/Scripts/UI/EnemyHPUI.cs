@@ -64,6 +64,7 @@ public class EnemyHPUI : MonoBehaviour
         Vector3 pos = targetEnemy.transform.position;
         pos.y = enemyCollider.height * transform.parent.localScale.y + offset.y;
         rect.transform.position = pos;
-        rect.transform.forward = Camera.main.transform.forward;
+        rect.transform.LookAt(transform.position + Camera.main.transform.forward);
+        //rect.transform.forward = Camera.main.transform.forward;
     }
 }

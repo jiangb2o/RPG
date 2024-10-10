@@ -33,11 +33,11 @@ public class CharacterMove : MonoBehaviour
         if (moveDir != Vector3.zero)
         {
             //if(animator) animator.SetBool("IsRun", true);
-            transform.forward = moveDir;
+            transform.LookAt(transform.position + moveDir);
             // 匀速阶段
             if (speed >= maxSpeed)
             {
-                transform.position += transform.forward * speed * Time.deltaTime;
+                transform.Translate(0, 0, speed * Time.deltaTime);
             }
             // 继续加速
             else
@@ -74,15 +74,15 @@ public class CharacterMove : MonoBehaviour
         {
             float accTime = Mathf.Abs((limitSpeed - speed) / a);
             // 加速/减速阶段距离
-            transform.position += transform.forward * (speed + limitSpeed) / 2 * accTime;
+            transform.Translate(0, 0, (speed + limitSpeed) / 2 * accTime);
             // 匀速阶段距离
-            transform.position += transform.forward * limitSpeed * (Time.deltaTime - accTime);
+            transform.Translate(0, 0, limitSpeed * (Time.deltaTime - accTime));
             speed = limitSpeed;
         }
         // 一直匀加速/匀减速
         else
         {
-            transform.position += transform.forward * (speed + newSpeed) / 2 * Time.deltaTime;
+            transform.Translate(0, 0, (speed + newSpeed) / 2 * Time.deltaTime);
             speed = newSpeed;
         }
     }
