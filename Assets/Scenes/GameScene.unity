@@ -1800,6 +1800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerProperty: {fileID: 0}
+  textPopupPrefab: {fileID: 0}
 --- !u!95 &194263600
 Animator:
   serializedVersion: 5
@@ -2260,6 +2261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerProperty: {fileID: 0}
+  textPopupPrefab: {fileID: 0}
   bulletSpeed: 30
   bulletPrefab: {fileID: 3416383600466935698, guid: dff0478126f15e5458132066b8e5a639, type: 3}
 --- !u!1 &252928447
@@ -2920,7 +2922,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &342265700
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5498,6 +5500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerProperty: {fileID: 0}
+  textPopupPrefab: {fileID: 0}
   bulletSpeed: 30
   bulletPrefab: {fileID: 3416383600466935698, guid: dff0478126f15e5458132066b8e5a639, type: 3}
 --- !u!1001 &526163709
@@ -6075,7 +6078,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1969643385822655146, guid: 486ecd3aa23ab9b4a8324770c99968ac, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7004064269677618066, guid: 486ecd3aa23ab9b4a8324770c99968ac, type: 3}
+      propertyPath: HP
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 8430142625401728427, guid: 486ecd3aa23ab9b4a8324770c99968ac, type: 3}
       propertyPath: m_Name
@@ -8285,7 +8292,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5ffeb72e31aeaa4a9326423b65da18f, type: 3}
   m_Name: 
@@ -8298,7 +8305,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c4a020e0299e614b8db8a146cf52801, type: 3}
   m_Name: 
@@ -12065,6 +12072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerProperty: {fileID: 0}
+  textPopupPrefab: {fileID: 0}
 --- !u!95 &1688118897
 Animator:
   serializedVersion: 5
@@ -14684,7 +14692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5762902411667481585, guid: 1235f6fdfe904874cab3c83e4a67727c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5762902411667481585, guid: 1235f6fdfe904874cab3c83e4a67727c, type: 3}
       propertyPath: m_TagString

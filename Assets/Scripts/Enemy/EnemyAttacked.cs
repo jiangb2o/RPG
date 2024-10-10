@@ -29,7 +29,7 @@ public class EnemyAttacked : MonoBehaviour
             Die();
         }
     }
-
+    // TODO: 死亡后持续倒地一段时间
     private void Die()
     {
         DropPickableItem();

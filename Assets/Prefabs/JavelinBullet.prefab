@@ -114,7 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30757c8c81dff2349aea0a223c6aa4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackValue: 0
+  playerProperty: {fileID: 0}
+  textPopupPrefab: {fileID: 2884046242491704192, guid: ddb16c4479cc13d41bb48d8c50bd48ef, type: 3}
 --- !u!65 &2292747268154596860
 BoxCollider:
   m_ObjectHideFlags: 0

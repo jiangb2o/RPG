@@ -148,4 +148,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25fb3904603e194499d077e3127e4e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackValue: 50
+  playerProperty: {fileID: 0}
+  textPopupPrefab: {fileID: 2884046242491704192, guid: ddb16c4479cc13d41bb48d8c50bd48ef, type: 3}

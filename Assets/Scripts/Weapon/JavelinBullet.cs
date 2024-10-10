@@ -31,7 +31,7 @@ public class JavelinBullet : Weapon
         transform.parent = other.gameObject.transform;
         if (other.gameObject.tag == Tag.ENEMY)
         {
-            other.gameObject.GetComponent<EnemyAttacked>().TakeDamage(CalculateDamage());
+           CalculateDamage(other.gameObject);
         }
 
         // 碰撞后一定时间进行销毁

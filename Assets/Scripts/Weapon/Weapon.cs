@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public PlayerProperty playerProperty;
-
+    public GameObject textPopupPrefab;
     public virtual void Attack() { }
 
     protected virtual void Start()
@@ -13,10 +13,10 @@ public class Weapon : MonoBehaviour
         playerProperty = GameObject.FindGameObjectWithTag(Tag.PLAYER).GetComponent<PlayerProperty>();
     }
 
-    public float CalculateDamage()
+    public void CalculateDamage(GameObject target)
     {
-        //playerProperty = GameObject.FindGameObjectWithTag(Tag.PLAYER).GetComponent<PlayerProperty>();
-        // TODO: 人物属性的影响
+        GameObject textPopupGameObject = Instantiate(textPopupPrefab, target.transform);
+        
         float damage = 0;
         if (Utils.GetRandomRate() > playerProperty.criticalRate.value)
         {
@@ -24,8 +24,9 @@ public class Weapon : MonoBehaviour
         }
         else
         {
+            textPopupGameObject.GetComponent<PopupText>().isCritical = true;
             damage = playerProperty.attack.value * (1 + playerProperty.criticalDamage.value / 100f);
         }
-        return damage;
+        target.GetComponent<EnemyAttacked>().TakeDamage(damage);
     }
 }
