@@ -117,7 +117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0.5, z: 0}
-  lerpSpeed: 2
+  lerpSpeed: 1.5
+  showDistance: 20
 --- !u!1 &378388977942614190
 GameObject:
   m_ObjectHideFlags: 0

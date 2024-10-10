@@ -2920,7 +2920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &342265700
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6065,6 +6065,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1985227306, guid: 486ecd3aa23ab9b4a8324770c99968ac, type: 3}
+      propertyPath: showDistance
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 1969643385822655143, guid: 486ecd3aa23ab9b4a8324770c99968ac, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -8281,7 +8285,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5ffeb72e31aeaa4a9326423b65da18f, type: 3}
   m_Name: 
@@ -8294,7 +8298,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c4a020e0299e614b8db8a146cf52801, type: 3}
   m_Name: 
@@ -14680,7 +14684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5762902411667481585, guid: 1235f6fdfe904874cab3c83e4a67727c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5762902411667481585, guid: 1235f6fdfe904874cab3c83e4a67727c, type: 3}
       propertyPath: m_TagString
