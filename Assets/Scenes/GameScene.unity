@@ -6084,6 +6084,10 @@ PrefabInstance:
       propertyPath: HP
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 7004064269677618066, guid: 486ecd3aa23ab9b4a8324770c99968ac, type: 3}
+      propertyPath: MaxHp
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 8430142625401728427, guid: 486ecd3aa23ab9b4a8324770c99968ac, type: 3}
       propertyPath: m_Name
       value: TestEnemy
