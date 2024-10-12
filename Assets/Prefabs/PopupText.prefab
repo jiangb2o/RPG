@@ -247,9 +247,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eadb1e60b907e4458f386d2ea3caa36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   isCritical: 0
   duration: 1.5
-  moveSpeed: 1
+  moveSpeed: 1.2
   moveDirection: {x: 0, y: 0, z: 0}
   dirOffset: {x: 0, y: 0, z: 0}
   spawnOffset: {x: 0, y: 0.5, z: 0}
