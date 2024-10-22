@@ -52,7 +52,7 @@ public class JavelinWeapon : Weapon
             bulletGO.tag = Tag.INTERACTABLE;
             // 为子弹挂载PickableObject组件, 并将itemSO设置为自身PickableObject的对象
             PickableObject po = bulletGO.AddComponent<PickableObject>();
-            po.itemSO = this.GetComponent<PickableObject>().itemSO;
+            po.itemSO = GetComponent<PickableObject>().itemSO;
 
             // 设置子弹的rigidbody属性
             Rigidbody rigidbody = bulletGO.GetComponent<Rigidbody>();
@@ -63,7 +63,7 @@ public class JavelinWeapon : Weapon
 
             // 作为Pickable时不需要父物体
             bulletGO.transform.parent = null;
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

@@ -32,7 +32,7 @@ public class PlayerLevel : MonoBehaviour
 
     private void OnEnemyDied(EnemyAttacked enemyAttacked)
     {
-        this.currentExp += enemyAttacked.exp;
+        currentExp += enemyAttacked.exp;
 
         if(currentExp >= level * 30)
         {

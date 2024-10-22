@@ -19,7 +19,7 @@ public class PlayerAttack : MonoBehaviour
 
         weaponSO = itemSO;
         GameObject weaponPrefab = itemSO.prefab;
-        Transform weaponSite = this.transform.Find(weaponPrefab.name + "Site");
+        Transform weaponSite = transform.Find(weaponPrefab.name + "Site");
         GameObject weaponGameObject = GameObject.Instantiate(weaponPrefab, weaponSite);
         weapon = weaponGameObject.GetComponent<Weapon>();
 
@@ -31,7 +31,7 @@ public class PlayerAttack : MonoBehaviour
         {
             InventoryManager.Instance.AddItem(weaponSO);
             Destroy(weapon.gameObject);
-            this.weapon = null;
+            weapon = null;
 
         }
     }

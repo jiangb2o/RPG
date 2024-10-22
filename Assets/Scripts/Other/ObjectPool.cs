@@ -17,7 +17,7 @@ public class ObjectPool
         parentTransform = transform;
         pool = new List<GameObject>();
 
-        for(int i = 0; i < poolSize; ++i)
+        for(int i = 0; i < this.poolSize; ++i)
         {
             GameObject obj = GameObject.Instantiate(objectPrefab, parentTransform);
             obj.SetActive(false);
@@ -38,6 +38,7 @@ public class ObjectPool
 
         // 没有可用的对象
         GameObject newGameObject = GameObject.Instantiate(objectPrefab);
+        poolSize++;
         newGameObject.SetActive(true);
         pool.Add(newGameObject);
         return newGameObject;

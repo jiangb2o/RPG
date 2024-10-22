@@ -21,7 +21,7 @@ public class InventoryUI : MonoBehaviour
     {
         if(Instance != null && Instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             return;
         }
         Instance = this;

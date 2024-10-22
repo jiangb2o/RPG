@@ -26,8 +26,7 @@ public class PlayerMove : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            RaycastHit hit;
-            bool isCollide = Physics.Raycast(ray, out hit);
+            bool isCollide = Physics.Raycast(ray, out RaycastHit hit);
             if (isCollide)
             {
                 if (hit.collider.tag == "Ground")

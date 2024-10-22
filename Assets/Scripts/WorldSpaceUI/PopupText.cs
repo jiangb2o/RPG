@@ -56,7 +56,7 @@ public class PopupText : MonoBehaviour
         Move();
         Fade();
         
-        if(text.alpha <= threshAlpha) Destroy(this.gameObject);
+        if(text.alpha <= threshAlpha) Destroy(gameObject);
     }
 
     void LateUpdate()
@@ -71,7 +71,7 @@ public class PopupText : MonoBehaviour
 
     private void Fade()
     {
-        text.alpha -= (Time.deltaTime / duration) * (1 - threshAlpha);
+        text.alpha -= Time.deltaTime / duration * (1 - threshAlpha);
     }
 
     private void CriticalTextSetting()

@@ -17,13 +17,13 @@ public class ItemDetailUI : MonoBehaviour
 
     public void Show()
     {
-        this.gameObject.SetActive(true);
+        gameObject.SetActive(true);
     }
 
     public void Hide() 
     {
         Utils.ClearGrid(propertyGrid.transform);
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
 

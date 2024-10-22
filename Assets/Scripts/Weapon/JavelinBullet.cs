@@ -31,11 +31,11 @@ public class JavelinBullet : Weapon
         transform.parent = other.gameObject.transform;
         if (other.gameObject.tag == Tag.ENEMY)
         {
-           CalculateDamage(other.gameObject);
+            CalculateDamage(other.gameObject);
         }
 
         // 碰撞后一定时间进行销毁
-        Destroy(this.gameObject, 2.0f);
+        Destroy(gameObject, 2.0f);
 
     }
 }

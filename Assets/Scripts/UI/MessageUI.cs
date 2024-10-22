@@ -18,7 +18,7 @@ public class MessageUI : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             return;
         }
         Instance = this;
@@ -51,7 +51,7 @@ public class MessageUI : MonoBehaviour
 
     public void Show(string message)
     {
-        GameObject textObject = Instantiate(textTemplate, this.transform);
+        GameObject textObject = Instantiate(textTemplate, transform);
         TextMeshProUGUI tmp = textObject.GetComponent<TextMeshProUGUI>();
         tmp.enabled = true;
         tmp.color = Color.white;

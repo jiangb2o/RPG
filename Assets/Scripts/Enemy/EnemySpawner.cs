@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.transform.childCount < maxEnemyCount)
+        if (transform.childCount < maxEnemyCount)
         {
             spawnTimer += Time.deltaTime;
             if (spawnTimer >= spawnTime)
@@ -36,8 +36,8 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy()
     {
         GameObject newEnemy = EnemyObjectPool.Get();
-        newEnemy.transform.position = this.transform.position;
-        newEnemy.transform.parent = this.transform;
+        newEnemy.transform.position = transform.position;
+        newEnemy.transform.parent = transform;
     }
 
     void OnEmemyDie(EnemyAttacked enemy)

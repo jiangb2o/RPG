@@ -11,6 +11,6 @@ public class PickableObject : InteractableObject
     {
         // add to inventory and destroy
         InventoryManager.Instance.AddItem(itemSO);
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }
