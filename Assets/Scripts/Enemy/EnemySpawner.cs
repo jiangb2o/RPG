@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public float spawnTime;
     public int maxEnemyCount = 3;
+    public float delayDieTime = 2f;
 
     private float spawnTimer;
     private ObjectPool EnemyObjectPool;
@@ -41,6 +42,13 @@ public class EnemySpawner : MonoBehaviour
 
     void OnEmemyDie(EnemyAttacked enemy)
     {
-        EnemyObjectPool.Return(enemy.gameObject);
+        StartCoroutine(DelayReturn(enemy.gameObject));
+    }
+
+    IEnumerator DelayReturn(GameObject enemy)
+    {
+        yield return new WaitForSeconds(delayDieTime);
+        enemy.GetComponent<EnemyDie>().enabled = false;
+        EnemyObjectPool.Return(enemy);
     }
 }
