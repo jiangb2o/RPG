@@ -7,7 +7,7 @@ public class PlayerPick : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         // 先检测是否为可交互物体
-        if (other.gameObject.tag == Tag.INTERACTABLE)
+        if (other.gameObject.CompareTag(Tag.INTERACTABLE))
         {
             PickableObject po = other.gameObject.GetComponent<PickableObject>();
             // 检测是否有PickableObject组件
