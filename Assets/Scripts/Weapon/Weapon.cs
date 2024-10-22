@@ -27,6 +27,7 @@ public class Weapon : MonoBehaviour
             textPopupGameObject.GetComponent<PopupText>().isCritical = true;
             damage = playerProperty.attack.value * (1 + playerProperty.criticalDamage.value / 100f);
         }
+        textPopupGameObject.GetComponent<PopupText>().damage = damage;
         target.GetComponent<EnemyAttacked>().TakeDamage(damage);
     }
 }

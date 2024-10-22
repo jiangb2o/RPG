@@ -15,6 +15,7 @@ public class PopupText : MonoBehaviour
     private static int nextId;
     public int id;
     
+    public float damage;
     public bool isCritical = false;
     public float duration = 1.5f;
     
@@ -35,6 +36,7 @@ public class PopupText : MonoBehaviour
         
         rectTransform = GetComponent<RectTransform>();
         text = transform.Find("Text").GetComponent<TextMeshProUGUI>();
+        text.text = damage.ToString();
 
         Transform parent = transform.parent;
         Vector3 pos = parent.position;
@@ -51,10 +53,10 @@ public class PopupText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         Move();
-         Fade();
-         
-         if(text.alpha <= threshAlpha) Destroy(this.gameObject);
+        Move();
+        Fade();
+        
+        if(text.alpha <= threshAlpha) Destroy(this.gameObject);
     }
 
     void LateUpdate()
