@@ -5,10 +5,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogueUI : MonoBehaviour
+public class DialogueUI : MonoSingleton<DialogueUI>
 {
     // 单例模式
-    public static DialogueUI Instance { get; private set; }
+    // public static DialogueUI Instance { get; private set; }
 
     // 获取文本组件 说话者 内容
     private TextMeshProUGUI speakerText;
@@ -23,18 +23,6 @@ public class DialogueUI : MonoBehaviour
     private GameObject ui;
 
     private Action OnDialogueEnd;
-
-    private void Awake()
-    {
-        // 单例模式, 如果出现另外的Object则销毁
-        // 实例已存在且不为此物体脚本
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-        Instance = this;
-    }
 
     private void Start()
     {
