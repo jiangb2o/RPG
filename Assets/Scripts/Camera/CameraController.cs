@@ -26,9 +26,9 @@ public class CameraController : MonoBehaviour
         {
             float scroll = Input.GetAxis("Mouse ScrollWheel");
 
-            // 获取相机组件
+            // 鑾峰彇鐩告満缁勪欢
             Camera.main.fieldOfView -= scroll * zoomSpeed;
-            //  限制范围
+            //  闄愬埗鑼冨洿
             Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, 35.0f, 70.0f);
         }
     }
