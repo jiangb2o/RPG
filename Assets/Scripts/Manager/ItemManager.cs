@@ -4,23 +4,9 @@ using System.Diagnostics.Contracts;
 using UnityEngine;
 using UnityEngine.Scripting;
 
-public class ItemManager : MonoBehaviour
+public class ItemManager : MonoSingleton<ItemManager>
 {
-    public static ItemManager Instance { get; private set; }
     public ItemDatabase itemDB;
-
-    void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-    }
-
-    
-
     public ItemScriptObject GetRandomItem()
     {
         int index = Random.Range(0, itemDB.itemList.Count);
@@ -33,7 +19,7 @@ public class ItemManager : MonoBehaviour
 
         for (int i = 0; i < dropNumber; ++i)
         {
-            ItemScriptObject itemSO = ItemManager.Instance.GetRandomItem();
+            ItemScriptObject itemSO = Instance.GetRandomItem();
 
             GameObject ItemObject = GameObject.Instantiate(itemSO.prefab, position + 2 * Vector3.up, Quaternion.identity);
             ItemObject.tag = Tag.INTERACTABLE;
