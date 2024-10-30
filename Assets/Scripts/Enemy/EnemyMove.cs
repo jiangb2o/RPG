@@ -20,9 +20,9 @@ public class EnemyMove : MonoBehaviour
     private NavMeshAgent enemyAgent;
     private EnemyState state;
     private Vector3 currentPosition;
+    private string timerStr;
 
     public float restTime = 1.5f;
-    private float restTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,11 @@ public class EnemyMove : MonoBehaviour
         enemyAgent = GetComponent<NavMeshAgent>();
         state = EnemyState.NormalState;
         currentPosition = transform.position;
-        restTimer = 0;
+        timerStr = gameObject.name + gameObject.GetInstanceID();
+        TimerManager.Instance.AddTimer(timerStr, new Timer(restTime, 
+            callAction: () => enemyAgent.SetDestination(FindRandomPosition())
+            )
+        );
     }
 
     // Update is called once per frame
@@ -41,18 +45,9 @@ public class EnemyMove : MonoBehaviour
         {
             if (IsMoving())
             {
-                if (enemyAgent.remainingDistance <= 0)
+                if (enemyAgent.remainingDistance > 0)
                 {
-                    restTimer = 0;
-                }
-            }
-            else
-            {
-                restTimer += Time.deltaTime;
-                if (restTimer > restTime)
-                {
-                    Vector3 randomPosition = FindRandomPosition();
-                    enemyAgent.SetDestination(randomPosition);
+                    TimerManager.Instance.ResetTimer(timerStr);
                 }
             }
         }
@@ -64,10 +59,7 @@ public class EnemyMove : MonoBehaviour
 
     }
 
-    private bool IsMoving()
-    {
-        return currentPosition != transform.position;
-    }
+    private bool IsMoving() => currentPosition != transform.position;
 
     Vector3 FindRandomPosition()
     {

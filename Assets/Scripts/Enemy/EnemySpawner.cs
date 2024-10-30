@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public int maxEnemyCount = 3;
     public float delayDieTime = 2f;
 
+    private string timerStr;
     private float spawnTimer;
     private ObjectPool EnemyObjectPool;
 
@@ -16,31 +18,26 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         EnemyObjectPool = new ObjectPool(enemyPrefab, maxEnemyCount, transform.parent);
-        EventCenter.OnEnemyDied += OnEmemyDie;
+        timerStr = gameObject.name + gameObject.GetInstanceID();
+        TimerManager.Instance.AddTimer(timerStr, new Timer(spawnTime, callAction:SpawnEnemy));
+        EventCenter.OnEnemyDied += OnEnemyDie;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        if (transform.childCount < maxEnemyCount)
-        {
-            spawnTimer += Time.deltaTime;
-            if (spawnTimer >= spawnTime)
-            {
-                spawnTimer = 0;
-                SpawnEnemy();
-            }
-        }
+        TimerManager.Instance.RemoveTimer(timerStr);
     }
 
     void SpawnEnemy()
     {
+        if(transform.childCount >= maxEnemyCount) return;
+        
         GameObject newEnemy = EnemyObjectPool.Get();
         newEnemy.transform.position = transform.position;
         newEnemy.transform.parent = transform;
     }
 
-    void OnEmemyDie(EnemyAttacked enemy)
+    void OnEnemyDie(EnemyAttacked enemy)
     {
         StartCoroutine(DelayReturn(enemy.gameObject));
     }
