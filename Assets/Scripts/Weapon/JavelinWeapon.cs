@@ -44,7 +44,7 @@ public class JavelinWeapon : Weapon
         bulletGO.GetComponent<Collider>().enabled = false;
 
         // 作为掉落物的处理
-        if(tag == Tag.INTERACTABLE)
+        if(CompareTag(Tag.INTERACTABLE))
         {
             // 移除作为子弹时的组件(防止碰撞后子弹自动销毁)
             Destroy(bulletGO.GetComponent<JavelinBullet>());
