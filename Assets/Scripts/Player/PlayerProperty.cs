@@ -9,41 +9,30 @@ using UnityEngine.Rendering.PostProcessing;
 public class PropertyRecord
 {
     public string itemName;
-    public int value;
+    public float value;
     public PropertyRecord(){}
 
-    public PropertyRecord(string itemName, int value)
+    public PropertyRecord(string itemName, float value)
     {
         this.itemName = itemName;
         this.value = value;
     }
-
 }
 
-public class PlayerProperty : MonoBehaviour
+public class PlayerProperty : Property
 {
     public Dictionary<PropertyType, List<PropertyRecord>> propertyDict;
-    //public int hp, speed, criticalRate, criticalDamage, attack;
-    public int hpMax = 100, speedMin = 3;
-    public Property hp, speed, criticalRate, criticalDamage, attack;
-
     private List<PropertyRecord> propertyRecordList;
 
     private NavMeshAgent playerAgent;
     private CharacterMove playMove;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         playerAgent = GetComponent<NavMeshAgent>();
         playMove = GetComponent<CharacterMove>();
-
-        hp.propertyType = PropertyType.HP;
-        attack.propertyType = PropertyType.Attack;
-        speed.propertyType  = PropertyType.Speed;
-        criticalRate.propertyType = PropertyType.CriticalRate;
-        criticalDamage.propertyType = PropertyType.CriticalDamage;
-
         propertyDict = new Dictionary<PropertyType, List<PropertyRecord>>();
         foreach (PropertyType propertyType in Enum.GetValues(typeof(PropertyType)))
         {
@@ -112,7 +101,7 @@ public class PlayerProperty : MonoBehaviour
         PlayerPropertyUI.Instance.UpdatePlayerPropertyUI();
     }
 
-    public void AddProperties(List<Property> properties, string itemName)
+    public void AddProperties(List<PropertyPairs> properties, string itemName)
     {
         foreach (var property in properties)
         {
@@ -128,7 +117,7 @@ public class PlayerProperty : MonoBehaviour
         UpdateProperty();
     }
 
-    void AddHp(int value)
+    void AddHp(float value)
     {
         hp.value = Math.Min(hp.value + value, hpMax);
     }
@@ -139,7 +128,7 @@ public class PlayerProperty : MonoBehaviour
         hp.value = hpMax;
     }
 
-    void AddProperty(PropertyType propertyType, string itemName ,int value)
+    void AddProperty(PropertyType propertyType, string itemName ,float value)
     {
         // 符合属性类的 属性记录List
         propertyDict.TryGetValue(propertyType, out propertyRecordList);
@@ -161,6 +150,12 @@ public class PlayerProperty : MonoBehaviour
             // 移除List中物体名称属性值
             propertyRecordList.Remove(propertyRecordList.Find(x => x.itemName == itemName));
         }
+        UpdateProperty();
+    }
+
+    public void TakeDamage(float damage)
+    {
+        hp.value -= damage;
         UpdateProperty();
     }
 }
