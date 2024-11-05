@@ -17,6 +17,7 @@ public class PopupText : MonoBehaviour
     
     public float damage;
     public bool isCritical = false;
+    public bool isEnemy = true;
     public float duration = 1.5f;
     
     public float moveSpeed = 1.2f;
@@ -40,14 +41,21 @@ public class PopupText : MonoBehaviour
 
         Transform parent = transform.parent;
         Vector3 pos = parent.position;
-        pos.y = parent.gameObject.GetComponent<CapsuleCollider>().height * transform.parent.localScale.y + spawnOffset.y;
+        if (parent.gameObject.GetComponent<CapsuleCollider>())
+        {
+            pos.y = parent.gameObject.GetComponent<CapsuleCollider>().height * transform.parent.localScale.y + spawnOffset.y;
+        }
+        else if (parent.gameObject.GetComponent<BoxCollider>())
+        {
+            pos.y = parent.gameObject.GetComponent<BoxCollider>().bounds.max.y + spawnOffset.y;
+        }
         rectTransform.position = pos;
 
         dirOffset.y = Random.Range(-0.1f, 0.1f);
         dirOffset.x = Random.Range(-0.1f, 0.1f);
         moveDirection = (Vector3.up + Vector3.right + dirOffset).normalized;
         
-        CriticalTextSetting();
+        TextSetting();
     }
 
     // Update is called once per frame
@@ -74,8 +82,14 @@ public class PopupText : MonoBehaviour
         text.alpha -= Time.deltaTime / duration * (1 - threshAlpha);
     }
 
-    private void CriticalTextSetting()
+    private void TextSetting()
     {
+        if (!isEnemy)
+        {
+            text.color = Color.white;
+            text.fontSize = 0.2f;
+            return;
+        }
         if (isCritical)
         {
             text.color = MyColor.criticalDamage;
