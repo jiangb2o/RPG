@@ -21,7 +21,7 @@ public class ScytheWeapon : Weapon
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == Tag.ENEMY)
+        if (other.CompareTag(Tag.ENEMY))
         {
             CalculateDamage(other.gameObject);
             //print("Trigger with " + other.name);
