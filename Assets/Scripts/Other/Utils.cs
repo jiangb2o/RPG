@@ -72,10 +72,10 @@ public enum ItemType
 }
 
 [System.Serializable]
-public class Property
+public class PropertyPairs
 {
     public PropertyType propertyType;
-    public int value;
+    public float value;
 }
 
 public enum PropertyType
