@@ -22,6 +22,7 @@ public class EnemyMove : MonoBehaviour
     private Vector3 currentPosition;
     private string timerStr;
     private Transform playerTransform;
+    private EnemyProperty enemyProperty;
     
     public float viewRadius = 5f;
     public float viewAngle = 60f;
@@ -31,6 +32,7 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemyProperty = GetComponent<EnemyProperty>();
         enemyAgent = GetComponent<NavMeshAgent>();
         state = EnemyState.NormalState;
         currentPosition = transform.position;
@@ -43,6 +45,7 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        enemyAgent.speed = enemyProperty.speed.value;
         UpdateState();
         if (state == EnemyState.NormalState)
         {

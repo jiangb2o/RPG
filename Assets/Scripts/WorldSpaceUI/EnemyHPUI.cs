@@ -10,7 +10,7 @@ public class EnemyHPUI : MonoBehaviour
     public float lerpSpeed = 1.5f;
     public float showDistance;
     
-    private EnemyAttacked targetEnemy;
+    private EnemyProperty targetEnemy;
     private RectTransform rect;
     private CapsuleCollider enemyCollider;
 
@@ -22,7 +22,7 @@ public class EnemyHPUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        targetEnemy = transform.parent.GetComponent<EnemyAttacked>();
+        targetEnemy = transform.parent.GetComponent<EnemyProperty>();
         rect = GetComponent<RectTransform>();
         enemyCollider = transform.parent.GetComponent<CapsuleCollider>();
         
@@ -53,9 +53,9 @@ public class EnemyHPUI : MonoBehaviour
 
     private void UpdateHealth()
     {
-        blood.fillAmount = targetEnemy.HP / targetEnemy.MaxHp;
+        blood.fillAmount = targetEnemy.hp.value / targetEnemy.hpMax;
         effect.fillAmount = Mathf.Lerp(effect.fillAmount, blood.fillAmount, Time.deltaTime * lerpSpeed);
-        HpValue.text = targetEnemy.HP + "/" + targetEnemy.MaxHp;
+        HpValue.text = targetEnemy.hp.value + "/" + targetEnemy.hpMax;
     }
         
 

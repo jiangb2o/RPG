@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class EnemyAttacked : MonoBehaviour
 {
-    public float MaxHp = 100;
-    public float HP = 100;
+    public EnemyProperty enemyProperty;
     public int exp = 20;
+    void Awake()
+    {
+        enemyProperty = GetComponent<EnemyProperty>();
+    }
     
     void OnEnable()
     {
-        HP = MaxHp;
+        enemyProperty.hp.value = enemyProperty.hpMax;
         GetComponent<CapsuleCollider>().enabled = true;
     }
-
-    // Start is called before the first frame update
-    void Start() { }
+    
 
     // Update is called once per frame
     void Update()
@@ -23,10 +24,10 @@ public class EnemyAttacked : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        HP -= damage;
-        HP = Mathf.Clamp(HP, 0, MaxHp);
+        enemyProperty.hp.value -= damage;
+        enemyProperty.hp.value = Mathf.Clamp(enemyProperty.hp.value, 0, enemyProperty.hpMax);
 
-        if (HP <= 0)
+        if (enemyProperty.hp.value <= 0)
         {
             Die();
         }
