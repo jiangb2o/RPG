@@ -107,14 +107,14 @@ public class PlayerPropertyUI : MonoBehaviour
         }
     }
 
-    private void UpdateSingleProperty(Property property)
+    private void UpdateSingleProperty(PropertyPairs propertyPairs)
     {
         string propertyString = "";
-        propertyString += Utils.ItemPropertyTypeToString(property.propertyType);
+        propertyString += Utils.ItemPropertyTypeToString(propertyPairs.propertyType);
         propertyString += '\n';
-        propertyString += property.value.ToString();
+        propertyString += propertyPairs.value.ToString();
 
-        if (property.propertyType == PropertyType.CriticalRate || property.propertyType == PropertyType.CriticalDamage)
+        if (propertyPairs.propertyType == PropertyType.CriticalRate || propertyPairs.propertyType == PropertyType.CriticalDamage)
         {
             propertyString += '%';
         }
@@ -123,6 +123,6 @@ public class PlayerPropertyUI : MonoBehaviour
 
         TextMeshProUGUI propertyText = propertyCell.transform.Find("Text").GetComponent<TextMeshProUGUI>();
         propertyText.text = propertyString;
-        propertyText.color = Utils.ItemPropertyTypeColor(property.propertyType);
+        propertyText.color = Utils.ItemPropertyTypeColor(propertyPairs.propertyType);
     }
 }

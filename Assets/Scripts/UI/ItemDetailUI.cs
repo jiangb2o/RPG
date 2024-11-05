@@ -40,7 +40,7 @@ public class ItemDetailUI : MonoBehaviour
         descriptionText.text = itemSO.description;
 
         // create property template and set text and color for each property 
-        foreach (Property itemProperty in itemSO.propertyList)
+        foreach (PropertyPairs itemProperty in itemSO.propertyList)
         {
             string propertyString = "";
             propertyString += Utils.ItemPropertyTypeToString(itemProperty.propertyType);

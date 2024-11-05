@@ -9,7 +9,7 @@ public class ItemScriptObject : ScriptableObject
     public string itemName;
     public ItemType itemType;
     public string description;
-    public List<Property> propertyList;
+    public List<PropertyPairs> propertyList;
     public Sprite icon;
     public GameObject prefab;
 
