@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f4190325f328d943ae380cb438317d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackValue: 20
+  ownerIsPlayer: 0
+  owner: {fileID: 0}
+  ownerProperty: {fileID: 0}
+  textPopupPrefab: {fileID: 2884046242491704192, guid: ddb16c4479cc13d41bb48d8c50bd48ef, type: 3}
   bulletSpeed: 30
   bulletPrefab: {fileID: 3416383600466935698, guid: dff0478126f15e5458132066b8e5a639, type: 3}
 --- !u!95 &1165764469
